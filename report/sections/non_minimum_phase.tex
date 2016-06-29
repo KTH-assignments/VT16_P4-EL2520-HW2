@@ -1,0 +1,87 @@
+For the non-minimum phase case, the Relative Gain Array suggests that inputs
+$u_1$ and $u_2$ should be paired to outputs $y_2$ and $y_1$ respectively. The
+controller $F(s)$ will thus be of the form:
+
+\[
+F(s)=
+\begin{bmatrix}
+  0      & f_1(s) \\
+  f_2(s) & 0      \\
+\end{bmatrix}
+\]
+where $f_i = K_i (1 + \dfrac{1}{T_i s}), i \in \{1,2\}$. Here,
+$$T_i = \dfrac{1}{\omega_c^{nmp}} tan(\phi_m - \pi/2 - arg(G_{ji}(j\omega_c^{nmp})))$$
+and
+$$K_i = \dfrac{1}{\Big|G_{ji}(j\omega_c^{nmp}) (1 + \dfrac{1}{j\omega_c^{nmp}T_i})\Big|}$$
+where $i \neq j$, $\omega_c^{nmp} = 0.02$ rad/s and $\phi_m = 60^{\circ}$. From
+the above two relations we conclude that
+
+\begin{align*}
+  f_1(s) &= 0.1437 (1 + \dfrac{1}{4.8107s})  \\
+  f_2(s) &= 0.1469 (1 + \dfrac{1}{3.9426s})  \\
+\end{align*}
+
+Figure \ref{fig:non_minimum_phase_step_23} shows the step responses of the
+system for an input step signal applied at input $u_1$ at $t=100$s and at input
+$u_2$ at $t=500$s.
+
+\begin{figure}[H]\centering
+  \scalebox{0.8}{\input{./figures/non_minimum_phase_step_23.tex}}
+  \caption{Step responses in outputs $y_1$ (\texttt{blue}) and $y_2$
+    \texttt{red}.}
+  \label{fig:non_minimum_phase_step_23}
+\end{figure}
+
+Tables \ref{tbl:minimum_phase_overshoot} and \ref{tbl:minimum_phase_risetime}
+feature the overshoot and rise time performance metrics with regard to the
+step responses of the system. The large overshoot figures are in line with the
+high sensitivity magnitude. It is evident that all inputs are coupled to all
+outputs, but the applied control actions result in adequate, but slow,
+performance, and certainly worse than in the minimum phase case.
+
+Figure \ref{fig:non_minimum_phase_bode_l_21} shows the frequency response of
+$L_{11}(j\omega) = G_{12}(j\omega) f_2(j\omega)$ (\texttt{blue}) and
+$L_{22}(j\omega) = G_{21}(j\omega) f_1(j\omega)$ (\texttt{red}), where $L = GF$.
+The phase margin is $60^{\circ}$ at the required gain crossover frequency
+$\omega_c^{nmp} = 0.02$ rad/s.
+
+\noindent\makebox[\linewidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{table}[H]\centering
+        \begin{tabular}{r|c|c}
+        Input/Output & $y_1$    & $y_2$    \\ \hline
+          $u_1$          & $0\%$  & $\underline{41.9\%}$ \\
+          $u_2$          & $\underline{36.3\%}$ & $0\%$  \\
+        \end{tabular}
+        \caption{Overshoot figures regarding the step response depicted in figure
+          \ref{fig:non_minimum_phase_step_23}. Underlined percentages reference
+          control-coupled inputs/outputs.}
+        \label{tbl:non_minimum_phase_overshoot}
+    \end{table}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{table}[H]\centering
+        \begin{tabular}{r|c|c}
+        Input/Output & $y_1$    & $y_2$    \\ \hline
+          $u_1$          & $137.1$ & ~  \\
+          $u_2$          & ~  & $135$ \\
+        \end{tabular}
+        \caption{Rise times in seconds regarding the step responses depicted in
+          figure \ref{fig:non_minimum_phase_step_23}.}
+        \label{tbl:non_minimum_phase_risetime}
+    \end{table}
+  \end{minipage}
+\end{minipage}
+}
+
+
+\begin{figure}[H]\centering
+\scalebox{1}{\input{./figures/non_minimum_phase_bode_l_21.tex}}
+\caption{$L_{11}(j\omega) = G_{12}(j\omega) f_2(j\omega)$ (\texttt{blue}) and
+  $L_{22}(j\omega) = G_{21}(j\omega) f_1(j\omega)$ (\texttt{red}), where $L = GF$.
+  The phase margin is $60^{\circ}$ and the gain crossover frequency is
+  $\omega_c^{nmp} = 0.02$ rad/s.}
+\label{fig:non_minimum_phase_bode_l_21}
+\end{figure}

@@ -1,0 +1,66 @@
+\documentclass[a4paper,12pt,oneside,onecolumn]{article} % Document type
+
+\usepackage[left=1.0in, right=1.0in, top=1.0in, bottom=1.0in]{geometry}
+
+\usepackage{fontspec}
+\setmainfont{cmr12}
+\usepackage{amsmath,amssymb}   % Contains mathematical symbols
+\usepackage{xltxtra}
+\defaultfontfeatures{Ligatures=TeX}
+\usepackage[english]{babel}    % Language
+\usepackage[square,numbers]{natbib}     %Nice numbered citations
+\bibliographystyle{plainnat}            %Sorted bibliography
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{lscape}
+\usepackage{graphicx}
+\usepackage{pstricks}
+\usepackage{subfigure}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{rotating}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Filotheou}
+\rhead{EL2520}
+\chead{Multivariable Systems}
+\rfoot{Page \thepage\ of \pageref{LastPage}}
+\cfoot{}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\title{
+	Computer Exercise 2\\
+	EL2520 Control Theory and Practice
+}
+\author{
+  Alexandros Filotheou  \\
+	alefil@kth.se\\
+  $871108-5590$
+}
+
+
+
+\begin{document}
+	\maketitle
+
+	% Minimum phase case
+	\section*{Minimum phase case}
+    \input{./sections/minimum_phase.tex}
+
+  \newpage
+
+	% Non-minimum phase case
+	\section*{Non-minimum phase case}
+    \input{./sections/non_minimum_phase.tex}
+
+  \begin{thebibliography}{9}
+  \bibitem{bk}
+    T. Glad and L. Ljung, \emph{Control Theory - Multivariable and Nonlinear Methods}
+  \bibitem{sp}
+    S. Skogestad and I. Postlethwaite, \emph{Multivariable Feedback Control -
+    Analysis and Design}
+  \end{thebibliography}
+
+\end{document}
